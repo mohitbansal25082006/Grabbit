@@ -1,0 +1,366 @@
+/* ─────────────────────────────────────────────────────────────
+   Grabbit — "Burrow Neon" design system
+   Deep ink-violet night, electric carrot light, mint success.
+   ───────────────────────────────────────────────────────────── */
+@import '@fontsource-variable/space-grotesk';
+@import '@fontsource-variable/jetbrains-mono';
+
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0b0816;
+  --bg-2: #120d22;
+  --bg-3: #1a1430;
+  --surface: rgba(255, 255, 255, 0.045);
+  --surface-2: rgba(255, 255, 255, 0.075);
+  --surface-3: rgba(255, 255, 255, 0.11);
+  --stroke: rgba(255, 255, 255, 0.085);
+  --stroke-2: rgba(255, 255, 255, 0.16);
+  --text: #f4f1ff;
+  --muted: #a59fc0;
+  --faint: #6f6890;
+  --carrot: #ff6b1a;
+  --carrot-2: #ffa23d;
+  --rose: #ff3d7f;
+  --mint: #3dffc4;
+  --violet: #8b5cf6;
+  --sky: #5cc8ff;
+  --danger: #ff5a78;
+  --warn: #ffc23d;
+  --on-accent: #ffffff;
+  --cut: #0b0816;
+  --grad: linear-gradient(135deg, #ff6b1a 0%, #ff3d7f 100%);
+  --grad-soft: linear-gradient(135deg, rgba(255, 107, 26, 0.18), rgba(255, 61, 127, 0.14));
+  --grad-mint: linear-gradient(135deg, #3dffc4, #5cc8ff);
+  --shadow: 0 18px 50px -18px rgba(0, 0, 0, 0.8);
+  --shadow-sm: 0 6px 20px -10px rgba(0, 0, 0, 0.7);
+  --glow: 0 0 0 1px rgba(255, 107, 26, 0.45), 0 12px 40px -12px rgba(255, 107, 26, 0.6);
+  --ring: 0 0 0 3px rgba(255, 107, 26, 0.35);
+  --glow-a: rgba(255, 107, 26, 0.22);
+  --glow-b: rgba(139, 92, 246, 0.2);
+  --grain-opacity: 0.07;
+  --knob-a: #2e2550;
+  --knob-b: #130e24;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #fbf7f1;
+  --bg-2: #f4ede3;
+  --bg-3: #ebe2d4;
+  --surface: rgba(26, 19, 48, 0.035);
+  --surface-2: rgba(26, 19, 48, 0.06);
+  --surface-3: rgba(26, 19, 48, 0.09);
+  --stroke: rgba(26, 19, 48, 0.08);
+  --stroke-2: rgba(26, 19, 48, 0.15);
+  --text: #1a1330;
+  --muted: #625a7e;
+  --faint: #9d96b5;
+  --carrot: #f25c05;
+  --carrot-2: #e98a1c;
+  --rose: #e8266a;
+  --mint: #0fae84;
+  --violet: #6d3fe0;
+  --sky: #1f8fd6;
+  --danger: #d8324f;
+  --warn: #c58a00;
+  --cut: #ffffff;
+  --grad: linear-gradient(135deg, #f25c05 0%, #e8266a 100%);
+  --grad-soft: linear-gradient(135deg, rgba(242, 92, 5, 0.12), rgba(232, 38, 106, 0.08));
+  --grad-mint: linear-gradient(135deg, #0fae84, #1f8fd6);
+  --shadow: 0 18px 50px -22px rgba(60, 30, 10, 0.35);
+  --shadow-sm: 0 6px 18px -10px rgba(60, 30, 10, 0.3);
+  --glow: 0 0 0 1px rgba(242, 92, 5, 0.35), 0 12px 36px -14px rgba(242, 92, 5, 0.5);
+  --ring: 0 0 0 3px rgba(242, 92, 5, 0.25);
+  --glow-a: rgba(242, 92, 5, 0.12);
+  --glow-b: rgba(109, 63, 224, 0.1);
+  --grain-opacity: 0.045;
+  --knob-a: #ffffff;
+  --knob-b: #efe6da;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Space Grotesk Variable', 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.mono,
+.num {
+  font-family: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  font-feature-settings: 'tnum' 1, 'zero' 1;
+  letter-spacing: -0.01em;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+}
+
+::selection {
+  background: rgba(255, 107, 26, 0.35);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-3);
+  border-radius: 10px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Film grain + ambient glows: the "burrow" atmosphere. */
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(60% 45% at 0% 0%, var(--glow-a), transparent 70%),
+    radial-gradient(55% 50% at 100% 100%, var(--glow-b), transparent 70%);
+}
+.atmosphere::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Glass surfaces */
+.glass {
+  background: var(--surface);
+  border: 1px solid var(--stroke);
+  border-radius: 18px;
+  backdrop-filter: blur(12px) saturate(1.2);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid var(--stroke);
+  background: var(--surface-2);
+  font-weight: 600;
+  font-size: 13px;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    transform 0.12s,
+    box-shadow 0.2s;
+  white-space: nowrap;
+}
+.btn:hover {
+  background: var(--surface-3);
+  border-color: var(--stroke-2);
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.btn:disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+.btn.primary {
+  background: var(--grad);
+  color: var(--on-accent);
+  border-color: transparent;
+  box-shadow: var(--glow);
+}
+.btn.primary:hover {
+  filter: brightness(1.08);
+}
+.btn.ghost {
+  background: transparent;
+  border-color: transparent;
+}
+.btn.ghost:hover {
+  background: var(--surface-2);
+}
+.btn.icon {
+  width: 36px;
+  padding: 0;
+}
+.btn.sm {
+  height: 30px;
+  padding: 0 10px;
+  font-size: 12px;
+  border-radius: 10px;
+}
+.btn.sm.icon {
+  width: 30px;
+}
+.btn.danger:hover {
+  color: var(--danger);
+  border-color: color-mix(in srgb, var(--danger) 40%, transparent);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: var(--surface-2);
+  border: 1px solid var(--stroke);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.chip.hot {
+  color: var(--carrot);
+  background: color-mix(in srgb, var(--carrot) 12%, transparent);
+  border-color: color-mix(in srgb, var(--carrot) 30%, transparent);
+}
+.chip.mint {
+  color: var(--mint);
+  background: color-mix(in srgb, var(--mint) 10%, transparent);
+  border-color: color-mix(in srgb, var(--mint) 28%, transparent);
+}
+.chip.danger {
+  color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 10%, transparent);
+  border-color: color-mix(in srgb, var(--danger) 30%, transparent);
+}
+.chip.violet {
+  color: var(--violet);
+  background: color-mix(in srgb, var(--violet) 12%, transparent);
+  border-color: color-mix(in srgb, var(--violet) 30%, transparent);
+}
+
+.input,
+select.input {
+  height: 36px;
+  width: 100%;
+  padding: 0 12px;
+  border-radius: 11px;
+  border: 1px solid var(--stroke);
+  background: var(--surface);
+  outline: none;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+.input:focus {
+  border-color: color-mix(in srgb, var(--carrot) 60%, transparent);
+  box-shadow: var(--ring);
+}
+select.input {
+  appearance: none;
+  padding-right: 30px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23a59fc0' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 11px center;
+}
+select.input option {
+  background: var(--bg-2);
+  color: var(--text);
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.muted {
+  color: var(--muted);
+}
+.faint {
+  color: var(--faint);
+}
+.grad-text {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@keyframes hop {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  40% {
+    transform: translateY(-7px) rotate(-8deg);
+  }
+  60% {
+    transform: translateY(-5px) rotate(4deg);
+  }
+}
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--surface), var(--surface-3), var(--surface));
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+  border-radius: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

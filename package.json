@@ -1,0 +1,37 @@
+{
+  "name": "grabbit",
+  "description": "Grab any web video in the best quality \u2014 blazing-fast parallel downloads for HLS, DASH and direct media.",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "wxt",
+    "dev:edge": "wxt -b edge",
+    "build": "wxt build",
+    "build:edge": "wxt build -b edge",
+    "zip": "wxt zip",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "test": "vitest run",
+    "test:e2e": "node tests/e2e/run.mjs",
+    "fixtures": "node tests/fixtures/generate.mjs",
+    "icons": "node scripts/icons.mjs",
+    "postinstall": "wxt prepare",
+    "test:ui": "node tests/e2e/ui.mjs",
+    "store": "node scripts/store-assets.mjs"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.3.0",
+    "@wxt-dev/module-svelte": "^2.0.5",
+    "playwright": "^1.63.0",
+    "svelte": "^5.57.1",
+    "svelte-check": "^4.7.6",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.1",
+    "wxt": "^0.21.4"
+  },
+  "dependencies": {
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource-variable/space-grotesk": "^5.3.0",
+    "mediabunny": "^1.59.1"
+  }
+}

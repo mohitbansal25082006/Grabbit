@@ -1,0 +1,50 @@
+# ── Dependencies ──
+node_modules/
+.pnpm-store/
+
+# ── Build output (regenerate with `npm run build` / `npm run zip`) ──
+.output/
+.wxt/
+dist/
+*.crx
+*.zip
+# …except the upload-ready Chrome Web Store package
+!store/grabbit-*-chrome.zip
+
+# ── Extension signing keys — never commit these ──
+*.pem
+key.pem
+
+# ── Tests & generated media (regenerate with `npm run fixtures`) ──
+coverage/
+tests/fixtures/media/
+tests/e2e/.profile/
+tests/e2e/downloads/
+tests/e2e/downloads-ui/
+store/.build/
+
+# ── Environment & secrets ──
+.env
+.env.*
+!.env.example
+
+# ── Logs ──
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ── Editors & OS ──
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Local tooling ──
+web-ext.config.ts
+*.tmp.mjs
+tests/e2e/screenshots/
