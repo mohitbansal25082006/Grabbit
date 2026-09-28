@@ -247,7 +247,7 @@ await render(
     kicker: 'Quality Dial',
     title: 'Turn the dial.<br><span class="grad">Pick any quality.</span>',
     lead: 'Grabbit finds every stream on the page and shows each quality with codec, frame rate and an estimated file size.',
-    bullets: ['4K, 1440p, 1080p, 720p… or audio only', 'HLS, DASH, MP4, WebM and more', 'MP4 or MKV — merged losslessly'],
+    bullets: ['4K, 1440p, 1080p, 720p… or audio only', 'Choose audio track and subtitles', 'MP4 or MKV — merged losslessly'],
     img: raw('popup-dial.png'),
     imgW: 408,
     chips: `<div class="chip" style="right:120px;top:40px"><span class="dot"></span>6 qualities found</div><div class="chip" style="left:600px;bottom:56px">Live size <em>estimates</em></div>`,
@@ -325,8 +325,8 @@ await render(
   `<div class="bg"></div><div class="grain"></div>
    <div style="position:absolute;left:30px;top:34px;display:flex;flex-direction:column;gap:12px">
      <div style="display:flex;align-items:center;gap:12px">${logoSvg(58)}<span style="font-size:40px;font-weight:800;letter-spacing:-.05em">Grabbit</span></div>
-     <div style="font-size:23px;font-weight:700;line-height:1.15;letter-spacing:-.03em;margin-top:10px">Grab any video.<br><span class="grad">Fast.</span></div>
-     <div style="font:600 12px 'JB',monospace;color:#B8B1D6;letter-spacing:.06em;margin-top:6px">HLS · DASH · MP4 · 4K</div>
+     <div style="font-size:23px;font-weight:700;line-height:1.15;letter-spacing:-.03em;margin-top:10px">Grab web videos.<br><span class="grad">Fast.</span></div>
+     <div style="font:600 12px 'JB',monospace;color:#B8B1D6;letter-spacing:.06em;margin-top:6px">UP TO 4K · TURBO DOWNLOADS</div>
    </div>
    <div style="position:absolute;right:-24px;top:40px;width:210px;height:210px">${dialArt(210)}</div>`,
 );

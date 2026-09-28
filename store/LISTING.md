@@ -42,9 +42,9 @@ Dashboard → **Items** → **+ New item** → upload `store/grabbit-1.0.0-chrom
 Grabbit — Video Downloader
 ```
 
-**Summary** (from the manifest, 124/132 characters)
+**Summary** (from the manifest, 127/132 characters)
 ```
-Grab web videos in the best available quality. Parallel turbo downloads for HLS, DASH, MP4 & WebM with full quality control.
+Grab web videos in the best available quality, with fast parallel downloads and full control over quality, audio and subtitles.
 ```
 
 **Description**
@@ -65,7 +65,7 @@ Grabbit finds the videos on the page you're watching and saves them in the quali
 • Large files are written straight to disk, so multi-GB downloads don't fill your memory.
 
 🔎 FINDS THE STREAMS OTHERS MISS
-• Detects HLS (.m3u8), MPEG-DASH (.mpd), MP4, WebM, MKV, MOV, MP3, M4A and more.
+• Works with both adaptive streaming video and ordinary video and audio files.
 • Catches streams loaded through a site's own player code and embedded players inside frames.
 • Groups different sizes of the same video into one card, and filters out ads, previews and tiny clips.
 • Record while playing: for players that hide their video links, Grabbit can record exactly what plays (optional Turbo 8× to finish long videos quickly) and save it as one clean file.

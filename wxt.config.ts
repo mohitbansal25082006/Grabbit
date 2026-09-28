@@ -10,7 +10,7 @@ export default defineConfig({
     name: 'Grabbit — Video Downloader',
     short_name: 'Grabbit',
     description:
-      'Grab web videos in the best available quality. Parallel turbo downloads for HLS, DASH, MP4 & WebM with full quality control.',
+      'Grab web videos in the best available quality, with fast parallel downloads and full control over quality, audio and subtitles.',
     minimum_chrome_version: '116',
     homepage_url: 'https://github.com/mohitbansal25082006/Grabbit',
     permissions: [
